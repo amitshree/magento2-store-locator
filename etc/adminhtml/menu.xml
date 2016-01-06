@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Lapisbard_StoreLocator::storelocator" title="Lapisbard" module="Lapisbard_StoreLocator" sortOrder="90" resource="Lapisbard_StoreLocator::storelocator" />
+        <add id="Lapisbard_StoreLocator::locations" title="Store Locations" module="Lapisbard_StoreLocator" sortOrder="10" parent="Lapisbard_StoreLocator::storelocator" action="lapisbard_storelocator/locations" resource="Lapisbard_StoreLocator::locations"/>
+    </menu>
+</config>

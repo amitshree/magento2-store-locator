@@ -1,0 +1,61 @@
+<?php
+/**
+ * Store view template
+ *
+ * @var $block \Lapisbard\StoreLocator\Block\Stores
+ */?>
+
+<?php echo $block->getTitle(); ?>
+<?php echo $block->getStoreDescription(); ?>
+<?php
+$countries = array('UK','India');
+?>
+
+
+<select id="lapisbard-country" style="width: 300px;text-indent: 55px;" name="lapisbard-country" onchange="showStates()">
+    <option value="">Select Country</option>
+    <?php
+    foreach($countries as $key => $value):
+        echo '<option style="text-indent: 55px;" value="'.$value.'">'.$value.'</option>';
+    endforeach;
+    ?>
+</select>
+<p id="lapisbard-city-id"></p>
+<p id="lapisbard-stores-id"></p>
+
+<script>
+    function showStates() {
+        require(["jquery"], function($){
+            var country = $("#lapisbard-country").val();
+            $.ajax({
+                url: '<?php echo $this->getUrl('lapisbard_store/index/states') ?>',
+                method: 'get',
+                data: { country: country},
+                dataType: 'json',
+                showLoader:true,
+                success: function(data){
+                    $('#lapisbard-stores-id').empty();
+                    $('#lapisbard-city-id').empty();
+                    $('#lapisbard-city-id').append(data.htmlconent);
+                }
+            });
+        });
+    }
+    function showStores() {
+        require(["jquery"], function($){
+            var city = $("#lapisbard-city").val();
+            $.ajax({
+                url: '<?php echo $this->getUrl('lapisbard_store/index/stores') ?>',
+                method: 'get',
+                data: { city: city},
+                dataType: 'json',
+                showLoader:true,
+                success: function(data){
+                    console.log(data);
+                    $('#lapisbard-stores-id').empty();
+                    $('#lapisbard-stores-id').append(data.htmlconent);
+                }
+            });
+        });
+    }
+</script>
