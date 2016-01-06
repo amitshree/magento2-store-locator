@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="lapisbard_store" frontName="lapisbard_store">
+            <module name="Lapisbard_StoreLocator"></module>
+        </route>
+
+    </router>
+</config>
